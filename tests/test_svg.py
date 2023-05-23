@@ -1,8 +1,8 @@
 import numpy as np
 import pytest
 
-from svg_transform.svg import SVG
-from svg_transform.utils import load_python_logo
+from svgtransform.svg import SVG
+from svgtransform.utils import load_python_logo
 
 
 @pytest.fixture

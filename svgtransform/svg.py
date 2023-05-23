@@ -9,7 +9,7 @@ from cairosvg import svg2png
 from lxml import etree
 from lxml.etree import ElementBase
 
-from svg_transform.svg_path import transform_path_command_string
+from svgtransform.svg_path import transform_path_command_string
 
 
 class SVG:
