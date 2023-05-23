@@ -1,4 +1,3 @@
-import matplotlib.pyplot as plt
 import numpy as np
 import pytest
 
@@ -43,7 +42,7 @@ def test_empty_transform(cross_abs: SVG):
         transformation=no_transform,
         inplace=True
     )
-    transformed_array = np.array(cross_abs.to_pil_image(scale=1))
+    transformed_array = np.array(cross_abs.to_pil_image(scale=1)).T[-1].tolist()
     expected_transformed_array = [
         [0, 0, 0, 0, 0],
         [0, 0, 255, 0, 0],
@@ -52,7 +51,7 @@ def test_empty_transform(cross_abs: SVG):
         [0, 0, 0, 0, 0]
     ]
 
-    transformed_array.T[-1].tolist() == expected_transformed_array
+    assert transformed_array == expected_transformed_array
 
 
 def test_shift_right_down(cross_abs: SVG):
@@ -64,10 +63,16 @@ def test_shift_right_down(cross_abs: SVG):
         transformation=shift_right_down,
         inplace=True
     )
-    transformed_array = np.array(cross_abs.to_pil_image(scale=1))
-    print(transformed_array.T[-1])
-    plt.imshow(transformed_array.T[-1])
-    plt.show()
+    transformed_array = np.array(cross_abs.to_pil_image(scale=1)).T[-1].tolist()
+    expected_transformed_array = [
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 255, 0],
+        [0, 0, 255, 255, 255],
+        [0, 0, 0, 255, 0]
+    ]
+
+    assert transformed_array == expected_transformed_array
 
 
 def test_shape(python_logo: SVG):
