@@ -8,7 +8,10 @@ packages = [{ include = "svg_transform" }]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-
+lxml = "^4.6.3"
+pillow = "^8.3.1"
+cairosvg = "^2.5.2"
+pytest = "^6.2.4"
 
 [build-system]
 requires = ["poetry-core"]
