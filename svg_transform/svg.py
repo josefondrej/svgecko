@@ -103,3 +103,7 @@ class SVG:
         buffer.seek(0)
         image = Image.open(buffer)
         return image
+
+    def add(self, other: SVG):
+        for child in other._xml:
+            self._xml.append(child)
