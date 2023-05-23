@@ -69,6 +69,24 @@ class SVG:
         else:
             svg = deepcopy(self)
 
+        self._transform_paths(svg, transformation)
+        self._transform_xy_attributes(svg, transformation)
+
+        return svg
+
+    @staticmethod
+    def _transform_xy_attributes(svg: SVG, transformation: Callable[[Tuple[float, float]], Tuple[float, float]]):
+        for attribute_pairs in [('x', 'y'), ('x1', 'y1'), ('x2', 'y2')]:
+            elements_with_both_attributes_selector = f'//*[@{attribute_pairs[0]} and @{attribute_pairs[1]}]'
+            elements_with_both_attributes = svg.xml.xpath(elements_with_both_attributes_selector)
+            for element in elements_with_both_attributes:
+                x_name, y_name = attribute_pairs
+                x, y = float(element.attrib[x_name]), float(element.attrib[y_name])
+                transformed_x, transformed_y = transformation((x, y))
+                element.attrib[x_name], element.attrib[y_name] = str(transformed_x), str(transformed_y)
+
+    @staticmethod
+    def _transform_paths(svg: SVG, transformation: Callable[[Tuple[float, float]], Tuple[float, float]]):
         elements_with_attribute_d_selector = '//*[@d]'
         paths = svg.xml.xpath(elements_with_attribute_d_selector)
         for path in paths:
@@ -78,8 +96,6 @@ class SVG:
                 transformation=transformation
             )
             path.attrib['d'] = transformed_path_command_string
-
-        return svg
 
     def to_pil_image(self, **kwargs) -> Image:
         buffer = BytesIO()
