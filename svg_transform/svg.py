@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from copy import deepcopy
 from io import BytesIO
 from typing import Callable, Tuple
 
@@ -42,12 +43,11 @@ class SVG:
         """
         return etree.tostring(self._xml, encoding=encoding).decode(encoding=encoding)
 
-    def copy(self) -> SVG:
-        """
-        Returns a copy of the SVG object.
-        :return: copy of the SVG object
-        """
-        return SVG(self._xml.copy())
+    def __copy__(self):
+        return SVG(self._xml)
+
+    def __deepcopy__(self, memodict={}):
+        return SVG(deepcopy(self._xml))
 
     def transform(self, transformation: Callable[[Tuple[float, float]], Tuple[float, float]],
                   inplace: bool = False) -> SVG:
@@ -60,7 +60,7 @@ class SVG:
         if inplace:
             svg = self
         else:
-            svg = self.copy()
+            svg = deepcopy(self)
 
         elements_with_attribute_d_selector = '//*[@d]'
         paths = svg.xml.xpath(elements_with_attribute_d_selector)
