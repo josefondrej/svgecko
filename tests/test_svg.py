@@ -3,10 +3,16 @@ import numpy as np
 import pytest
 
 from svg_transform.svg import SVG
+from svg_transform.utils import load_python_logo
 
 
 @pytest.fixture
-def cross():
+def python_logo() -> SVG:
+    return load_python_logo()
+
+
+@pytest.fixture
+def cross() -> SVG:
     """
     SVG with a cross in the middle
     """
@@ -19,7 +25,7 @@ def cross():
 
 
 @pytest.fixture
-def cross_abs():
+def cross_abs() -> SVG:
     """
     SVG with a cross in the middle, absolute coordinates
     """
@@ -62,3 +68,9 @@ def test_shift_right_down(cross_abs: SVG):
     print(transformed_array.T[-1])
     plt.imshow(transformed_array.T[-1])
     plt.show()
+
+
+def test_shape(python_logo: SVG):
+    width, height = python_logo.shape
+    assert abs(width - 92.070236) < 1e-6
+    assert abs(height - 101.00108) < 1e-6

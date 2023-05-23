@@ -49,6 +49,13 @@ class SVG:
     def __deepcopy__(self, memodict={}):
         return SVG(deepcopy(self._xml))
 
+    @property
+    def shape(self):
+        raw_width, raw_height = self.xml.attrib['width'], self.xml.attrib['height']
+        width = float(''.join([c for c in raw_width if c.isdigit() or c == '.']))
+        height = float(''.join([c for c in raw_height if c.isdigit() or c == '.']))
+        return width, height
+
     def transform(self, transformation: Callable[[Tuple[float, float]], Tuple[float, float]],
                   inplace: bool = False) -> SVG:
         """
