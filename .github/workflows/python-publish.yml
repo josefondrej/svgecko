@@ -1,0 +1,33 @@
+- name: PyPI Poetry Publish
+  # You may pin to the exact commit or the version.
+  # uses: code-specialist/pypi-poetry-publish@ec93221fb6b8d9d7f2e1e4866840a5df2f8588e3
+  uses: code-specialist/pypi-poetry-publish@v1.2
+  with:
+    # Access Token for GitHub with write access on the repository
+    ACCESS_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
+    # Python Version
+    PYTHON_VERSION: # optional, default is 3.10
+    # Directory of the package
+    PACKAGE_DIRECTORY: # optional, default is ./
+    # Password for the user to publish to PyPI. May also be a Token - requires the `PUBLISH_REGISTRY_USERNAME` to be `__token__`
+    PUBLISH_REGISTRY_PASSWORD: 
+    # The username for the registry. Defaults to __token__
+    PUBLISH_REGISTRY_USERNAME: # optional, default is __token__
+    # The version of Poetry to use
+    POETRY_VERSION: # optional, default is 
+    # The version of Poetry Core to use
+    POETRY_CORE_VERSION: # optional, default is 
+    # Branch to publish from
+    BRANCH: # optional, default is master
+    # Allows to define a custom registry to be used by Poetry for dependency installation
+    POETRY_DEPENDENCY_REGISTRY_URL: # optional
+    # The name used for the custom registry in the dependencies
+    POETRY_DEPENDENCY_REGISTRY_NAME: # optional
+    # The username for the custom registry
+    POETRY_DEPENDENCY_REGISTRY_USERNAME: # optional
+    # The password for the custom registry
+    POETRY_DEPENDENCY_REGISTRY_PASSWORD: # optional
+    # The authentication type for the custom registry
+    POETRY_DEPENDENCY_REGISTRY_AUTH: # optional, default is http-basic
+    # The registry to publish to
+    PUBLISH_REGISTRY: # optional, default is https://upload.pypi.org/legacy/
