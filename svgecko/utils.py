@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from svgtransform.svg import SVG
+from svgecko.svg import SVG
 
 
 def load_python_logo() -> SVG:
