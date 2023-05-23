@@ -1,0 +1,5 @@
+lxml
+pillow
+cairosvg
+pytest
+numpy
