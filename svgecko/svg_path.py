@@ -1,3 +1,4 @@
+import re
 from typing import Callable, Tuple, List, Optional
 
 COMMAND_TYPES = 'MmLlCcSsQqTtAaZzHhVv'
@@ -46,7 +47,8 @@ def parse_coordinates(coordinates: str) -> List[float]:
     """
     if coordinates.strip() == '':
         return list()
-    return [float(coordinate.strip()) for coordinate in coordinates.strip().split(' ')]
+
+    return [float(coordinate.strip()) for coordinate in re.split(r'[, ]+', coordinates.strip())]
 
 
 def parse_commands(path_command_string: str) -> List[PathCommand]:
