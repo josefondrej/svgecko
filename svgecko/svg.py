@@ -35,6 +35,17 @@ class SVG:
         svg_tree = etree.fromstring(bytes(svg_string, encoding=encoding))
         return SVG(svg_tree)
 
+    @classmethod
+    def from_file(cls, file_path: str, encoding: str = 'utf-8') -> SVG:
+        """
+        Parses an SVG file and returns an SVG object.
+        :param file_path: path to SVG file
+        :return: SVG object
+        """
+        with open(file_path, 'r', encoding=encoding) as file:
+            svg_string = file.read()
+        return SVG.from_string(svg_string, encoding=encoding)
+
     def to_string(self, encoding: str = 'utf-8') -> str:
         """
         Returns the SVG object as a string in XML format.
@@ -42,6 +53,15 @@ class SVG:
         :return: SVG string in XML format
         """
         return etree.tostring(self._xml, encoding=encoding).decode(encoding=encoding)
+
+    def to_file(self, file_path: str, encoding: str = 'utf-8') -> None:
+        """
+        Writes the SVG object to a file.
+        :param file_path: path to SVG file
+        :param encoding: encoding of the SVG string
+        """
+        with open(file_path, 'w', encoding=encoding) as file:
+            file.write(self.to_string(encoding=encoding))
 
     def __copy__(self):
         return SVG(self._xml)

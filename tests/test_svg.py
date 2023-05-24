@@ -1,8 +1,15 @@
+import os
+import re
+
 import numpy as np
 import pytest
 
 from svgecko.svg import SVG
-from svgecko.utils import load_python_logo
+from svgecko.utils import load_python_logo, CROSS_PATH
+
+
+def _replace_whitespaces_with_space(string: str) -> str:
+    return re.sub(r'\s+', ' ', string)
 
 
 @pytest.fixture
@@ -79,3 +86,23 @@ def test_shape(python_logo: SVG):
     width, height = python_logo.shape
     assert abs(width - 92.070236) < 1e-6
     assert abs(height - 101.00108) < 1e-6
+
+
+def test_from_file():
+    svg = SVG.from_file(CROSS_PATH)
+    svg_string = svg.to_string()
+    expected_svg_string = """<svg xmlns="http://www.w3.org/2000/svg" class="icon  icon--plus" width="5" height="5" viewBox="0 0 5 5"> <path d="M2 1 H3 V2 H4 V3 H3 V4 H2 V3 H1 V2 H2 Z"/> </svg>"""
+    assert _replace_whitespaces_with_space(svg_string) == _replace_whitespaces_with_space(expected_svg_string)
+
+
+@pytest.fixture
+def temp_svg_file_path() -> str:
+    yield 'temp.svg'
+    os.remove('temp.svg')
+
+
+def test_to_file(temp_svg_file_path):
+    svg = SVG.from_file(CROSS_PATH)
+    svg.to_file(temp_svg_file_path)
+    svg_retrieved = SVG.from_file(temp_svg_file_path)
+    assert svg_retrieved.to_string() == svg.to_string()
