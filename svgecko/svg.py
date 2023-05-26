@@ -96,7 +96,7 @@ class SVG:
 
     @staticmethod
     def _transform_xy_attributes(svg: SVG, transformation: Callable[[Tuple[float, float]], Tuple[float, float]]):
-        for attribute_pairs in [('x', 'y'), ('x1', 'y1'), ('x2', 'y2')]:
+        for attribute_pairs in [('x', 'y'), ('x1', 'y1'), ('x2', 'y2'), ('cx', 'cy')]:
             elements_with_both_attributes_selector = f'//*[@{attribute_pairs[0]} and @{attribute_pairs[1]}]'
             elements_with_both_attributes = svg.xml.xpath(elements_with_both_attributes_selector)
             for element in elements_with_both_attributes:
