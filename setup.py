@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='svgecko',
-    version='0.3.0',
+    version='0.3.1',
     author='Josef Ondrej',
     author_email='josef.ondrej@outlook.com',
     description='Lightweight library for arbitrary geometric SVG transformations',
