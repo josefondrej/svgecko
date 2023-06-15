@@ -69,6 +69,12 @@ class SVG:
     def __deepcopy__(self, memodict={}):
         return SVG(deepcopy(self._xml))
 
+    def __getstate__(self):
+        return {'xml': self.to_string()}
+
+    def __setstate__(self, state):
+        self._xml = self.from_string(state['xml']).xml
+
     @property
     def shape(self):
         raw_width, raw_height = self.xml.attrib['width'], self.xml.attrib['height']
