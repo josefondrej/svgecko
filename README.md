@@ -38,6 +38,7 @@ plt.show()
 ## Roadmap
 
 - [ ] Support for angular rotation path commands
-- [ ] Support for relative path commands
+- [ ] Support for relative path commands (for now as a workaround the relative paths can be converted to absolute using
+  for example [this tool](https://codepen.io/leaverou/pen/RmwzKv))
 - [ ] Support for style positioning commands (e.g. translate)
 
