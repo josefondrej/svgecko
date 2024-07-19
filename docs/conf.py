@@ -14,7 +14,11 @@ release = '0.3.4'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = []
+extensions = [
+    "autoapi.extension",
+    "sphinx.ext.napoleon",
+    "sphinx.ext.viewcode",
+]
 autoapi_dirs = ["../"]
 
 templates_path = ['_templates']
