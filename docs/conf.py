@@ -18,8 +18,9 @@ extensions = [
     "autoapi.extension",
     "sphinx.ext.napoleon",
     "sphinx.ext.viewcode",
+    "m2r2",
 ]
-autoapi_dirs = ["../"]
+autoapi_dirs = ["../svgecko"]
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
