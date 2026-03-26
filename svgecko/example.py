@@ -1,10 +1,10 @@
 import matplotlib.pyplot as plt
 
 from svgecko.svg import SVG
+from svgecko.utils import CROSS_PATH
 
 # Load the SVG
-svg_path = 'resources/cross.svg'
-svg = SVG.from_file(svg_path)
+svg = SVG.from_file(str(CROSS_PATH))
 
 # Define the transformation and apply it to the SVG
 transformation = lambda point: (point[0] + 1, point[1] + 1)

@@ -1,5 +1,14 @@
-lxml
-pillow
-cairosvg
-pytest
-numpy
+# Core dependencies
+lxml>=4.6.0
+pillow>=8.0.0
+cairosvg>=2.5.0
+numpy>=1.20.0
+
+# Development dependencies
+pytest>=6.0.0
+pytest-cov>=2.10.0
+black>=21.0.0
+isort>=5.0.0
+mypy>=0.900
+flake8>=3.8.0
+matplotlib
