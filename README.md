@@ -3,6 +3,7 @@
 [![PyPI version](https://badge.fury.io/py/svgecko.svg)](https://badge.fury.io/py/svgecko)
 [![Python Support](https://img.shields.io/pypi/pyversions/svgecko.svg)](https://pypi.org/project/svgecko/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Docs](https://img.shields.io/badge/Docs-Read%20the%20Docs-blue)](https://svgecko.readthedocs.io/en/latest/)
 
 A lightweight Python library for **arbitrary** geometric SVG transformations. SVGecko enables you to apply any mathematical transformation function to SVG files, going beyond simple affine transformations to support complex geometric operations.
 
