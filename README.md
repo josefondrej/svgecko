@@ -277,7 +277,7 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 
 ## 📝 Changelog
 
-### v0.3.4
+### v0.4.0
 - ✅ Added support for relative path commands
 - ✅ Added support for arc path commands (approximated as line segments)
 - ✅ Added support for CSS translate() functions in style attributes
