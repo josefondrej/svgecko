@@ -8,7 +8,7 @@ from svgecko.svg import SVG
 from svgecko.svg_path import Path, PathCommand
 from svgecko.utils import load_python_logo
 
-__version__ = "0.3.4"
+__version__ = "0.4.0"
 __author__ = "Josef Ondrej"
 __email__ = "josef.ondrej@outlook.com"
 
